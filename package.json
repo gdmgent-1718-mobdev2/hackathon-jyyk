@@ -24,8 +24,8 @@
     "react-native": "0.52.0"
   },
   "rnpm": {
-      "assets": [
-  "./assets/fonts/"
-      ]
+    "assets": [
+      "./assets/fonts/"
+    ]
   }
 }

@@ -95,6 +95,9 @@ typings/
 .gradle
 **/build/
 
+# Expo.io
+.expo/
+
 # Ignore Gradle GUI config
 gradle-app.setting
 
