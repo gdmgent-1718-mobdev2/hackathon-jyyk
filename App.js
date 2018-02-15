@@ -1,11 +1,21 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import Aanmelden from './components/Aanmelden';
+import { TabNavigator } from 'react-navigation';
+import HomeScreen from './screens/HomeScreen';
+import WalletScreen from './screens/WalletScreen';
+import ProfileScreen from './screens/ProfileScreen';
 
-export default class App extends React.Component {
-  render() {
-    return (
-        <Aanmelden />
-    );
-  }
+const Navigator = TabNavigator({
+  Wallet: { screen: WalletScreen },
+  Home: { screen: HomeScreen },
+  Profile: { screen: ProfileScreen },
+}, {
+  tabBarPosition: 'bottom',
+  swipeEnabled: true,
+})
+
+Navigator.navigationOptions = {
+  title: "Test Tab",
 }
+
+export default Navigator;
