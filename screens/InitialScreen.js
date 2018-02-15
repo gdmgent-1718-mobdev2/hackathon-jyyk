@@ -51,9 +51,10 @@ export default class InitialScreen extends Component{
         </View>
         <View style={styles.buttons}>
           <StretchedButtonLogIn onPress={() => this.props.navigation.navigate('Login')} family='barlow' text='Inloggen'  style='inloggen'/>
-          <StretchedButtonRegister family='barlow' text='Registreren' style='registreren'/>
+          <StretchedButtonRegister onPress={() => this.props.navigation.navigate('Register')} family='barlow' text='Registreren' style='registreren'/>
         </View>
       </View>
     );
   }
 }
+//added navigation to registerscreen: onPress={() => this.props.navigation.navigate('Register')}

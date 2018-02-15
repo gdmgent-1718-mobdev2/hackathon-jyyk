@@ -20,7 +20,7 @@ const styles = StyleSheet.create({
 export class StretchedButtonRegister extends Component{
   render() {
     return (
-        <TouchableOpacity style={[styles.button, styles.register]}>
+        <TouchableOpacity onPress={this.props.onPress} style={[styles.button, styles.register]}>
           <BarlowText name={this.props.text}/>
         </TouchableOpacity>
     );
