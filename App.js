@@ -48,14 +48,11 @@ export default class App extends Component {
     initializeFirebase();
   }
 
-  componentDidMount() {
-
-  }
-
   render() {
-    return (
-      this.state.authenticated ? <AppNavigator screenProps={{logout: () => this.handleLogout()}} />
-        : <AuthNavigator screenProps={{login: () => this.handleLogin() }}/>
-    );
+      if (this.state.authenticated) {
+        return <AppNavigator screenProps={{logout: () => this.handleLogout()}} />
+      } else {
+        return <AuthNavigator screenProps={{login: () => this.handleLogin() }}/>
+      }
   }
 }
