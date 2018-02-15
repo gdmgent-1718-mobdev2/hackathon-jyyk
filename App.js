@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { TabNavigator, TabBarBottom } from 'react-navigation';
 import HomeScreen from './screens/HomeScreen';
@@ -21,4 +21,28 @@ Navigator.navigationOptions = {
   title: "Test Tab",
 }
 
-export default Navigator;
+export default class App extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      authUser: null,
+    };
+  }
+
+  componentDidMount() {
+    // firebase.auth.onAuthStateChanged(authUser => {
+    //   authUser
+    //     ? this.setState(() => ({ authUser }))
+    //     : this.setState(() => ({ authUser: null }));
+    // });
+  }
+
+  render() {
+    return (
+      this.state.authUser
+        ? <Navigator />
+        : <View><Text>Log In!</Text></View>
+    );
+  }
+}
