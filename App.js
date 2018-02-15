@@ -7,6 +7,7 @@ import LoginScreen from './screens/LoginScreen';
 import HomeScreen from './screens/HomeScreen';
 import WalletScreen from './screens/WalletScreen';
 import ProfileScreen from './screens/ProfileScreen';
+import RegisterScreen from './screens/RegisterScreen';
 
 const AppNavigator = TabNavigator({
   Wallet: { screen: WalletScreen },
@@ -23,6 +24,7 @@ const AppNavigator = TabNavigator({
 const AuthNavigator = StackNavigator({
   Initial: { screen: InitialScreen},
   Login: { screen: LoginScreen},
+  Register: { screen: RegisterScreen }, //added this line to register
 })
 
 export default class App extends Component {
