@@ -1,11 +1,14 @@
 import React, { Component } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import { TabNavigator, TabBarBottom } from 'react-navigation';
+import { initializeFirebase } from './utils/firebaseService';
+import { TabNavigator, TabBarBottom, StackNavigator } from 'react-navigation';
+import InitialScreen from './screens/InitialScreen';
+import LoginScreen from './screens/LoginScreen';
 import HomeScreen from './screens/HomeScreen';
 import WalletScreen from './screens/WalletScreen';
 import ProfileScreen from './screens/ProfileScreen';
 
-const Navigator = TabNavigator({
+const AppNavigator = TabNavigator({
   Wallet: { screen: WalletScreen },
   Home: { screen: HomeScreen },
   Profile: { screen: ProfileScreen },
@@ -17,32 +20,26 @@ const Navigator = TabNavigator({
   initialRouteName : 'Home',
 })
 
-Navigator.navigationOptions = {
-  title: "Test Tab",
-}
+const AuthNavigator = StackNavigator({
+  Initial: { screen: InitialScreen},
+  Login: { screen: LoginScreen},
+})
+
 
 export default class App extends Component {
-  constructor(props) {
-    super(props);
 
-    this.state = {
-      authUser: null,
-    };
+  componentWillMount() {
+    initializeFirebase();
   }
 
   componentDidMount() {
-    // firebase.auth.onAuthStateChanged(authUser => {
-    //   authUser
-    //     ? this.setState(() => ({ authUser }))
-    //     : this.setState(() => ({ authUser: null }));
-    // });
+
   }
 
   render() {
+    const authenticated = false;
     return (
-      this.state.authUser
-        ? <Navigator />
-        : <View><Text>Log In!</Text></View>
+      authenticated ? <AppNavigator /> : <AuthNavigator />
     );
   }
 }

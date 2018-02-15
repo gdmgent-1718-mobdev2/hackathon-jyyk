@@ -2,7 +2,7 @@ import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { logInUser, signUpUser } from '../utils/firebaseService';
 import { Input } from '../components/Input';
-import { Submit } from '../components/Submit';
+import { Button } from '../components/Submit';
 
 export default class LoginScreen extends React.Component {
   constructor(props){
@@ -40,5 +40,8 @@ export default class LoginScreen extends React.Component {
 const styles = StyleSheet.create({
   form: {
     flex: 1,
+    backgroundColor: '#FFF',
+    justifyContent: 'center',
+    alignItems: 'center',
   }
 });

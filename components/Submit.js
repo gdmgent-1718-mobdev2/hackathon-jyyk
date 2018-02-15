@@ -10,14 +10,12 @@ export class Button extends React.Component {
   render(){
     let onPress = this.props.onPress;
     let title = this.props.title;
-    let style = this.props.style;
     return (
       <TouchableOpacity onPress={onPress} style={styles.button}>
-        <Text style={styles.{style}}>{ title }</Text>
+        <Text style={styles.text}>{ title }</Text>
       </ TouchableOpacity>
     )
   }
-
 }
 
 const styles = StyleSheet.create({
