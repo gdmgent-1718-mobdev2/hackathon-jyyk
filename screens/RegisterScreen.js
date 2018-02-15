@@ -11,6 +11,7 @@ export default class RegisterScreen extends React.Component {
     this.state = ({
       email: '',
       password: '',
+      name: '',
     })
   }
 
@@ -18,6 +19,12 @@ export default class RegisterScreen extends React.Component {
     const { login } = this.props.screenProps;
     return (
         <View style={styles.form}>
+          <Input
+            placeholder='Enter your name'
+            label='Name'
+            onChangeText= {name => this.setState({ name })}
+            value= {this.state.name}
+          />
           <Input
             placeholder='Enter your email'
             label='Email'
