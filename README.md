@@ -19,10 +19,6 @@ On our way to Beta 1.0
 * **Yoram Platteeuw** - *FirebaseDeveloper* 
 * **Yannick Mallefroy** - *FirebaseDeveloper* 
 
-## License
-
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
-
 ## AHS information
 
 |                     |                                |
