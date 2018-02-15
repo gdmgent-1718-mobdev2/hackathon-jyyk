@@ -2,17 +2,13 @@ import React, { Component } from 'react';
 import { View, Text, StyleSheet, Button, Image, TouchableOpacity } from 'react-native';
 import { StretchedButtonLogIn } from '../components/StretchedButtonLogIn';
 import { StretchedButtonRegister } from '../components/StretchedButtonRegister';
+import { Logo } from '../components/Logo';
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#6B8E4E',
     flexDirection: 'column',
-  },
-  image: {
-    flex: 0,
-    width: 250,
-    height: 170
   },
   logo: {
     flex: 3,
@@ -25,17 +21,6 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-end',
     flexDirection: 'column',
   },
-  button: {
-    flex: 1,
-    justifyContent: 'center',
-    padding: 50
-  },
-  text: {
-    fontSize: 30,
-    alignSelf: 'center',
-    color: 'white',
-    fontFamily: 'barlow-condensed-regular'
-  }
 });
 
 export default class InitialScreen extends Component{
@@ -44,14 +29,11 @@ export default class InitialScreen extends Component{
     return (
       <View style={styles.container}>
         <View style={styles.logo}>
-          <Image
-            style={styles.image}
-            source={require('../assets/images/logo.png')}
-          />
+          <Logo />
         </View>
         <View style={styles.buttons}>
-          <StretchedButtonLogIn onPress={() => this.props.navigation.navigate('Login')} family='barlow' text='Inloggen'  style='inloggen'/>
-          <StretchedButtonRegister onPress={() => this.props.navigation.navigate('Register')} family='barlow' text='Registreren' style='registreren'/>
+          <StretchedButtonLogIn onPress={() => this.props.navigation.navigate('Login')}  text='Inloggen'  />
+          <StretchedButtonRegister onPress={() => this.props.navigation.navigate('Register')}  text='Registreren' />
         </View>
       </View>
     );
