@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import { initializeFirebase } from './utils/firebaseService';
+import { initializeFirebase, logout } from './utils/firebaseService';
 import ignoreWarnings from 'react-native-ignore-warnings';
 import { TabNavigator, TabBarBottom, StackNavigator } from 'react-navigation';
 import InitialScreen from './screens/InitialScreen';
@@ -45,6 +45,7 @@ export default class App extends Component {
     this.setState({
       currentUser: null,
     });
+    logout();
   }
 
   componentWillMount() {

@@ -15,12 +15,16 @@ export function logInUser(email, password, callback) {
       firebase.auth().signInWithEmailAndPassword(email, password)
       .catch(error => {
         // Handle Errors here.
-
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        alert(errorMessage);
       })
       .then(() => {
         const user = firebase.auth().currentUser;
         console.log(user);
-        callback(JSON.stringify(user));
+        if (user) {
+          callback(JSON.stringify(user));
+        }
       });
 
     }
@@ -31,6 +35,9 @@ export function signUpUser(email, password, callback){
       firebase.auth().createUserWithEmailAndPassword(email, password)
       .catch(error => {
         // Handle Errors here.
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        alert(errorMessage);
       })
       .then(user => {
         // if user was succesfully registered -> add user to database
@@ -43,4 +50,13 @@ export function signUpUser(email, password, callback){
           callback(user);
         }
       });
+}
+
+export function logout() {
+  firebase.auth().signOut().then(function() {
+    // Sign-out successful.
+  }).catch(function(error) {
+    // An error happened.
+    console.log(error);
+  });
 }
