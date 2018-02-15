@@ -11,29 +11,36 @@ export function initializeFirebase() {
 
 // Firebase LogIn service
 export function logInUser(email, password, callback) {
-    try{
-      firebase.auth().signInWithEmailAndPassword(email, password).then(function(user){
+
+      firebase.auth().signInWithEmailAndPassword(email, password)
+      .catch(error => {
+        // Handle Errors here.
+
+      })
+      .then(() => {
+        const user = firebase.auth().currentUser;
         console.log(user);
         callback();
       });
 
     }
-    catch(error){
-      console.log(error.toString());
-    }
-}
 
 // Firebase SignUp service
 export function signUpUser(email, password){
-    try{
-      if(password.length<6){
-        alert('please enter atleast 6 characters')
-        return;
-      }
-      firebase.auth().createUserWithEmailAndPassword(email, password);
 
-    }
-    catch(error){
-      console.log(error.toString());
-    }
+      firebase.auth().createUserWithEmailAndPassword(email, password)
+      .catch(error => {
+        // Handle Errors here.
+      })
+      .then(user => {
+        // if user was succesfully registered -> add user to database
+        if (user) {
+          console.log(user);
+          const email = user.email;
+          const uid = user.uid;
+          firebase.database().ref('users/' + uid).set({
+              email: email
+          });
+        }
+      });
 }
