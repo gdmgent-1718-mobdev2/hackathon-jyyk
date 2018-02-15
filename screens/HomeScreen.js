@@ -18,7 +18,7 @@ class HomeScreen extends Component{
     const { currentUser } = this.props.screenProps;
     return (
       <View style={styles.container}>
-        <Text>Hallo, </Text>
+        <Text>Hallo, {currentUser.displayName}</Text>
       </View>
     );
   }

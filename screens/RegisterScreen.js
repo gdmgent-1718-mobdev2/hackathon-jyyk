@@ -38,7 +38,7 @@ export default class RegisterScreen extends React.Component {
             onChangeText= {password => this.setState({ password })}
             value= {this.state.password}
           />
-          <Button onPress={() => signUpUser(this.state.email, this.state.password, login)} title='Sign Up' style='primary' />
+          <Button onPress={() => signUpUser(this.state.name, this.state.email, this.state.password, login)} title='Sign Up' style='primary' />
         </View>
     );
   }

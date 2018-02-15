@@ -21,16 +21,15 @@ export function logInUser(email, password, callback) {
       })
       .then(() => {
         const user = firebase.auth().currentUser;
-        console.log(user);
         if (user) {
-          callback(JSON.stringify(user));
+          callback(user);
         }
       });
 
     }
 
 // Firebase SignUp service
-export function signUpUser(email, password, callback){
+export function signUpUser(name, email, password, callback){
 
       firebase.auth().createUserWithEmailAndPassword(email, password)
       .catch(error => {
@@ -45,9 +44,21 @@ export function signUpUser(email, password, callback){
           const email = user.email;
           const uid = user.uid;
           firebase.database().ref('users/' + uid).set({
+              name: name,
               email: email
           });
-          callback(user);
+          user.updateProfile({
+            displayName: name,
+          })
+          .then(function() {
+            // Update successful.
+            const user = firebase.auth().currentUser;
+            callback(user);
+          })
+          .catch(function(error) {
+            // An error happened.
+            console.log(error);
+          });
         }
       });
 }

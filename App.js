@@ -39,6 +39,7 @@ export default class App extends Component {
     this.setState({
       currentUser: user,
     });
+    console.log(user);
   }
 
   handleLogout() {
@@ -54,10 +55,11 @@ export default class App extends Component {
   }
 
   render() {
+    const { currentUser } = this.state;
       if (this.state.currentUser !== null) {
-        return <AppNavigator screenProps={{currentUser: this.state.currentUser, logout: () => this.handleLogout()}} />
+        return <AppNavigator screenProps={{currentUser, logout: () => this.handleLogout()}} />
       } else {
-        return <AuthNavigator screenProps={{login: () => this.handleLogin() }}/>
+        return <AuthNavigator screenProps={{login: (user) => this.handleLogin(user) }}/>
       }
   }
 }
