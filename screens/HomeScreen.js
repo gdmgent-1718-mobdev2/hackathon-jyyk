@@ -17,6 +17,7 @@ class HomeScreen extends Component{
     tabBarLabel: 'Home',
   }
   render() {
+    const { currentUser } = this.props.screenProps;
     return (
       <ImageBackground
         source={require('../assets/images/visuals/home.png')}

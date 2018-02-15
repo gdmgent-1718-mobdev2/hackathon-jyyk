@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import { initializeFirebase } from './utils/firebaseService';
+import { initializeFirebase, logout } from './utils/firebaseService';
+import ignoreWarnings from 'react-native-ignore-warnings';
 import { TabNavigator, TabBarBottom, StackNavigator } from 'react-navigation';
 import InitialScreen from './screens/InitialScreen';
 import LoginScreen from './screens/LoginScreen';
 import HomeScreen from './screens/HomeScreen';
 import WalletScreen from './screens/WalletScreen';
 import ProfileScreen from './screens/ProfileScreen';
+import RegisterScreen from './screens/RegisterScreen';
 
 const AppNavigator = TabNavigator({
   Wallet: { screen: WalletScreen },
@@ -23,34 +25,37 @@ const AppNavigator = TabNavigator({
 const AuthNavigator = StackNavigator({
   Initial: { screen: InitialScreen},
   Login: { screen: LoginScreen},
+  Register: { screen: RegisterScreen }, //added this line to register
 })
 
 export default class App extends Component {
   constructor(props) {
     super(props);
 
-    this.state = { authenticated: false };
+    this.state = { currentUser: null };
   }
 
-  handleLogin() {
+  handleLogin(user) {
     this.setState({
-      authenticated: true,
+      currentUser: user,
     });
   }
 
   handleLogout() {
     this.setState({
-      authenticated: false,
+      currentUser: null,
     });
+    logout();
   }
 
   componentWillMount() {
+    ignoreWarnings('Setting a timer');
     initializeFirebase();
   }
 
   render() {
-      if (this.state.authenticated) {
-        return <AppNavigator screenProps={{logout: () => this.handleLogout()}} />
+      if (this.state.currentUser !== null) {
+        return <AppNavigator screenProps={{currentUser: this.state.currentUser, logout: () => this.handleLogout()}} />
       } else {
         return <AuthNavigator screenProps={{login: () => this.handleLogin() }}/>
       }

@@ -1,16 +1,17 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import { logInUser } from '../utils/firebaseService';
+import { signUpUser } from '../utils/firebaseService';
 import { Input } from '../components/Input';
 import { Button } from '../components/Submit';
 
-export default class LoginScreen extends React.Component {
+export default class RegisterScreen extends React.Component {
   constructor(props){
     super(props);
 
     this.state = ({
       email: '',
       password: '',
+      name: '',
     })
   }
 
@@ -18,6 +19,12 @@ export default class LoginScreen extends React.Component {
     const { login } = this.props.screenProps;
     return (
         <View style={styles.form}>
+          <Input
+            placeholder='Enter your name'
+            label='Name'
+            onChangeText= {name => this.setState({ name })}
+            value= {this.state.name}
+          />
           <Input
             placeholder='Enter your email'
             label='Email'
@@ -31,7 +38,7 @@ export default class LoginScreen extends React.Component {
             onChangeText= {password => this.setState({ password })}
             value= {this.state.password}
           />
-          <Button onPress={() => logInUser(this.state.email, this.state.password, login)} title='Log In' style='primary' />
+          <Button onPress={() => signUpUser(this.state.email, this.state.password, login)} title='Sign Up' style='primary' />
         </View>
     );
   }
