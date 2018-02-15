@@ -1,13 +1,15 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet, Button } from 'react-native';
+import { View, Text, StyleSheet, Button, Image, ImageBackground } from 'react-native';
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#FFF',
+    width: undefined,
+    height: undefined,
+    backgroundColor:'transparent',
     justifyContent: 'center',
     alignItems: 'center',
-  }
+  },
 });
 
 class HomeScreen extends Component{
@@ -17,9 +19,13 @@ class HomeScreen extends Component{
   render() {
     const { currentUser } = this.props.screenProps;
     return (
-      <View style={styles.container}>
-        <Text>Hallo, {currentUser.displayName}</Text>
-      </View>
+      <ImageBackground
+        source={require('../assets/images/visuals/home.png')}
+        imageStyle={{resizeMode: 'stretch'}}
+        style={styles.container}
+      >
+      <Text>Hallo, {currentUser.displayName}</Text>
+      </ImageBackground>
     );
   }
 }

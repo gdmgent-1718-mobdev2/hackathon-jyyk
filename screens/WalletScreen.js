@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, ImageBackground } from 'react-native';
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: 'yellow',
+    width: undefined,
+    height: undefined,
+    backgroundColor:'transparent',
     justifyContent: 'center',
     alignItems: 'center',
   }
@@ -13,9 +15,14 @@ const styles = StyleSheet.create({
 class WalletScreen extends Component{
   render() {
     return (
-      <View style={styles.container}>
-        <Text>This is the Wallet Screen</Text>
-      </View>
+      <ImageBackground
+        source={require('../assets/images/visuals/wallet.png')}
+        imageStyle={{resizeMode: 'stretch'}}
+        style={styles.container}
+      >
+        <View style={styles.container}></View>
+      </ImageBackground>
+      
     );
   }
 }

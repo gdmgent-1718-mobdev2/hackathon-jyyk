@@ -1,13 +1,17 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, ImageBackground } from 'react-native';
 import { Button } from '../components/Submit';
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: 'red',
-    justifyContent: 'center',
-    alignItems: 'center',
+    width: undefined,
+    height: undefined,
+    backgroundColor:'transparent',
+  },
+  button: {
+    flex: 1,
+    flexDirection: 'column-reverse',
   }
 });
 
@@ -15,10 +19,18 @@ class ProfileScreen extends Component{
   render() {
     const { logout } = this.props.screenProps;
     return (
-      <View style={styles.container}>
-        <Text>This is the Profile Screen</Text>
-        <Button onPress={() => logout()} title="Afmelden"/>
+      <ImageBackground
+        source={require('../assets/images/visuals/profile.png')}
+        imageStyle={{resizeMode: 'stretch'}}
+        style={styles.container}
+      >
+
+      <View style={styles.button}>
+        <Button onPress={() => logout()} title="Afmelden" />
       </View>
+
+      </ImageBackground>
+      
     );
   }
 }
