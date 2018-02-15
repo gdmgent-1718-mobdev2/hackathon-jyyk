@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
+import { Button } from '../components/Submit';
 
 const styles = StyleSheet.create({
   container: {
@@ -12,9 +13,11 @@ const styles = StyleSheet.create({
 
 class ProfileScreen extends Component{
   render() {
+    const { logout } = this.props.screenProps;
     return (
       <View style={styles.container}>
         <Text>This is the Profile Screen</Text>
+        <Button onPress={() => logout()} title="Afmelden"/>
       </View>
     );
   }

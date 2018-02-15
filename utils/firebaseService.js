@@ -10,10 +10,11 @@ export function initializeFirebase() {
 }
 
 // Firebase LogIn service
-export function logInUser(email, password) {
+export function logInUser(email, password, callback) {
     try{
       firebase.auth().signInWithEmailAndPassword(email, password).then(function(user){
         console.log(user);
+        callback();
       });
 
     }

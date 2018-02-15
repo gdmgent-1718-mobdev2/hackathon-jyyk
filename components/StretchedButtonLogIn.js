@@ -20,7 +20,7 @@ const styles = StyleSheet.create({
 export class StretchedButtonLogIn extends Component{
   render() {
     return (
-        <TouchableOpacity style={[styles.button, styles.inloggen]}>
+        <TouchableOpacity onPress={this.props.onPress} style={[styles.button, styles.inloggen]}>
           <BarlowText name={this.props.text}/>
         </TouchableOpacity>
     );

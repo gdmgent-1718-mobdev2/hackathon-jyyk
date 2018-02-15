@@ -25,8 +25,24 @@ const AuthNavigator = StackNavigator({
   Login: { screen: LoginScreen},
 })
 
-
 export default class App extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = { authenticated: false };
+  }
+
+  handleLogin() {
+    this.setState({
+      authenticated: true,
+    });
+  }
+
+  handleLogout() {
+    this.setState({
+      authenticated: false,
+    });
+  }
 
   componentWillMount() {
     initializeFirebase();
@@ -37,9 +53,9 @@ export default class App extends Component {
   }
 
   render() {
-    const authenticated = false;
     return (
-      authenticated ? <AppNavigator /> : <AuthNavigator />
+      this.state.authenticated ? <AppNavigator screenProps={{logout: () => this.handleLogout()}} />
+        : <AuthNavigator screenProps={{login: () => this.handleLogin() }}/>
     );
   }
 }
