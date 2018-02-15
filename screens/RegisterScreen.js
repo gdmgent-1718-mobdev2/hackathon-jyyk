@@ -15,6 +15,7 @@ export default class RegisterScreen extends React.Component {
   }
 
   render() {
+    const { login } = this.props.screenProps;
     return (
         <View style={styles.form}>
           <Input
@@ -30,7 +31,7 @@ export default class RegisterScreen extends React.Component {
             onChangeText= {password => this.setState({ password })}
             value= {this.state.password}
           />
-          <Button onPress={() => signUpUser(this.state.email, this.state.password)} title='Sign Up' style='primary' />
+          <Button onPress={() => signUpUser(this.state.email, this.state.password, login)} title='Sign Up' style='primary' />
         </View>
     );
   }

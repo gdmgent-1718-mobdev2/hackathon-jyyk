@@ -26,7 +26,7 @@ export function logInUser(email, password, callback) {
     }
 
 // Firebase SignUp service
-export function signUpUser(email, password){
+export function signUpUser(email, password, callback){
 
       firebase.auth().createUserWithEmailAndPassword(email, password)
       .catch(error => {
@@ -35,12 +35,12 @@ export function signUpUser(email, password){
       .then(user => {
         // if user was succesfully registered -> add user to database
         if (user) {
-          console.log(user);
           const email = user.email;
           const uid = user.uid;
           firebase.database().ref('users/' + uid).set({
               email: email
           });
+          callback();
         }
       });
 }
