@@ -15,9 +15,10 @@ class HomeScreen extends Component{
     tabBarLabel: 'Home',
   }
   render() {
+    const { currentUser } = this.props.screenProps;
     return (
       <View style={styles.container}>
-        <Text>This is the Home Screen</Text>
+        <Text>Hallo, {currentUser}</Text>
       </View>
     );
   }

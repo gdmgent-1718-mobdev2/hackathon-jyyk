@@ -20,7 +20,7 @@ export function logInUser(email, password, callback) {
       .then(() => {
         const user = firebase.auth().currentUser;
         console.log(user);
-        callback();
+        callback(JSON.stringify(user));
       });
 
     }
@@ -40,7 +40,7 @@ export function signUpUser(email, password, callback){
           firebase.database().ref('users/' + uid).set({
               email: email
           });
-          callback();
+          callback(user);
         }
       });
 }

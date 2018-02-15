@@ -32,18 +32,18 @@ export default class App extends Component {
   constructor(props) {
     super(props);
 
-    this.state = { authenticated: false };
+    this.state = { currentUser: null };
   }
 
-  handleLogin() {
+  handleLogin(user) {
     this.setState({
-      authenticated: true,
+      currentUser: user,
     });
   }
 
   handleLogout() {
     this.setState({
-      authenticated: false,
+      currentUser: null,
     });
   }
 
@@ -53,8 +53,8 @@ export default class App extends Component {
   }
 
   render() {
-      if (this.state.authenticated) {
-        return <AppNavigator screenProps={{logout: () => this.handleLogout()}} />
+      if (this.state.currentUser !== null) {
+        return <AppNavigator screenProps={{currentUser: this.state.currentUser, logout: () => this.handleLogout()}} />
       } else {
         return <AuthNavigator screenProps={{login: () => this.handleLogin() }}/>
       }
