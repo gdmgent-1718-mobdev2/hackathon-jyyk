@@ -6,13 +6,9 @@ import { Input } from '../components/Input';
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    width: undefined,
-    height: undefined,
-    backgroundColor:'transparent',
-  },
-  button: {
-    flex: 1,
-    flexDirection: 'column-reverse',
+    backgroundColor: '#FFF',
+    justifyContent: 'center',
+    alignItems: 'center',
   }
 });
 
@@ -55,7 +51,7 @@ class ProfileScreen extends Component{
             onChangeText= {password => this.setState({ password })}
             value= {this.state.password}
           />
-        <View style={styles.button}>
+        <View>
           <Button onPress={() => logout()} title="Afmelden" />
         </View>
 

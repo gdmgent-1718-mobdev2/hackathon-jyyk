@@ -20,6 +20,12 @@ const AppNavigator = TabNavigator({
   animationEnabled: true,
   swipeEnabled: true,
   initialRouteName : 'Home',
+  tabBarOptions: {
+    labelStyle: {
+      fontSize: 20,
+      padding: 10,
+    }
+  }
 })
 
 const AuthNavigator = StackNavigator({
@@ -48,12 +54,21 @@ export default class App extends Component {
     logout();
   }
 
+
   componentWillMount() {
     ignoreWarnings('Setting a timer');
     initializeFirebase();
-    setTimeout(() => this.setState({
-      currentUser: checkLoggedIn(),
-    }), 1000);
+    checkLoggedIn(user => {
+      if (user) {
+        this.setState({
+          currentUser: user,
+        });
+      } else {
+        this.setState({
+          currentUser: null,
+        });
+      }
+    });
   }
 
   render() {

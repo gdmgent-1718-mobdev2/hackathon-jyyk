@@ -65,7 +65,7 @@ export function signUpUser(name, email, password, callback){
 }
 
 export function logout() {
-  firebase.auth().signOut().then(function() {
+  firebase.auth().signOut().then(() => {
     // Sign-out successful.
   }).catch(function(error) {
     // An error happened.
@@ -73,6 +73,12 @@ export function logout() {
   });
 }
 
-export function checkLoggedIn(){
-  return firebase.auth().currentUser;
+export function checkLoggedIn(callback){
+  firebase.auth().onAuthStateChanged(user => {
+    if (user) {
+      callback(user);
+    } else {
+      // No user is signed in.
+    }
+  });
 }
