@@ -39,7 +39,7 @@ class HomeScreen extends Component{
         style={styles.container}
       >
         <View style={styles.welcomeContainer}>
-          <Text style={styles.welcomeMsg}>Hallo, {currentUser.displayName}</Text>
+          <Text style={styles.welcomeMsg}>Hallo, {currentUser.displayName.charAt(0).toUpperCase() + currentUser.displayName.slice(1)}</Text>
         </View>
       </ImageBackground>
     );
