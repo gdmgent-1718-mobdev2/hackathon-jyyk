@@ -53,7 +53,7 @@ export default class App extends Component {
     initializeFirebase();
     setTimeout(() => this.setState({
       currentUser: checkLoggedIn(),
-    }), 1000);
+    }), 2000);
   }
 
   render() {

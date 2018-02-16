@@ -16,9 +16,9 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     backgroundColor: '#F5F5F5',
     flexDirection: 'row',
-    paddingVertical: 50,
+    paddingVertical: '2%',
     alignSelf: 'flex-start',
-    marginTop: 140,
+    marginTop: '27%',
   },
   welcomeMsg: {
     fontSize: 38,

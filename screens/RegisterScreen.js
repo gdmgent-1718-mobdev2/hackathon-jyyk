@@ -2,7 +2,7 @@ import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { signUpUser } from '../utils/firebaseService';
 import { Input } from '../components/Input';
-import { Button } from '../components/Submit';
+import { StretchedButtonRegister } from '../components/StretchedButtonRegister';
 
 export default class RegisterScreen extends React.Component {
   constructor(props){
@@ -19,26 +19,30 @@ export default class RegisterScreen extends React.Component {
     const { login } = this.props.screenProps;
     return (
         <View style={styles.form}>
-          <Input
-            placeholder='Enter your name'
-            label='Name'
-            onChangeText= {name => this.setState({ name })}
-            value= {this.state.name}
-          />
-          <Input
-            placeholder='Enter your email'
-            label='Email'
-            onChangeText= {email => this.setState({ email })}
-            value= {this.state.email}
-          />
-          <Input
-            placeholder='Enter your password'
-            label='Password'
-            secureTextEntry
-            onChangeText= {password => this.setState({ password })}
-            value= {this.state.password}
-          />
-          <Button onPress={() => signUpUser(this.state.name, this.state.email, this.state.password, login)} title='Sign Up' style='primary' />
+          <View style={styles.input}>
+            <Input
+              placeholder='Enter your name'
+              label='Name'
+              onChangeText= {name => this.setState({ name })}
+              value= {this.state.name}
+            />
+            <Input
+              placeholder='Enter your email'
+              label='Email'
+              onChangeText= {email => this.setState({ email })}
+              value= {this.state.email}
+            />
+            <Input
+              placeholder='Enter your password'
+              label='Password'
+              secureTextEntry
+              onChangeText= {password => this.setState({ password })}
+              value= {this.state.password}
+            />
+          </View>
+          <View style={styles.buttons}>
+            <StretchedButtonRegister onPress={() => signUpUser(this.state.name, this.state.email, this.state.password, login)} text='Sign Up'/>
+          </View>
         </View>
     );
   }
@@ -50,5 +54,18 @@ const styles = StyleSheet.create({
     backgroundColor: '#FFF',
     justifyContent: 'center',
     alignItems: 'center',
-  }
+    flexDirection: 'column',
+
+  },
+    buttons: {
+      flex: 0,
+      alignSelf: 'stretch',
+      justifyContent: 'flex-end',
+      flexDirection: 'column',
+    },
+    input:{
+      width: '90%',
+      flex: 3,
+
+    }
 });
