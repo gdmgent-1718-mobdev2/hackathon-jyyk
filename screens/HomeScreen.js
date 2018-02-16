@@ -10,6 +10,7 @@ const styles = StyleSheet.create({
   },
   welcomeMsg: {
     fontSize: 38,
+    textAlign: 'center',
   }
 
 });

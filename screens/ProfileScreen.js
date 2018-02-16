@@ -58,13 +58,6 @@ class ProfileScreen extends Component{
             onChangeText= {email => this.setState({ email })}
             value= {this.state.email}
           />
-          <Input
-            placeholder={currentUser.apiKey}
-            label='Password'
-            secureTextEntry
-            onChangeText= {password => this.setState({ password })}
-            value= {this.state.password}
-          />
         </View>
         <View style={styles.buttons}>
           <StretchedButtonRegister onPress={() => logout()} text="Afmelden" />
