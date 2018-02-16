@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import { initializeFirebase, logout } from './utils/firebaseService';
+import { initializeFirebase, logout, checkLoggedIn } from './utils/firebaseService';
 import ignoreWarnings from 'react-native-ignore-warnings';
 import { TabNavigator, TabBarBottom, StackNavigator } from 'react-navigation';
 import InitialScreen from './screens/InitialScreen';
@@ -31,8 +31,7 @@ const AuthNavigator = StackNavigator({
 export default class App extends Component {
   constructor(props) {
     super(props);
-
-    this.state = { currentUser: null };
+    this.state = { currentUser: null  };
   }
 
   handleLogin(user) {
@@ -52,9 +51,14 @@ export default class App extends Component {
   componentWillMount() {
     ignoreWarnings('Setting a timer');
     initializeFirebase();
+    setTimeout(() => this.setState({
+      currentUser: checkLoggedIn(),
+    }), 1000);
   }
 
   render() {
+    console.log(this.state.currentUser);
+    
     const { currentUser } = this.state;
       if (this.state.currentUser !== null) {
         return <AppNavigator screenProps={{currentUser, logout: () => this.handleLogout()}} />

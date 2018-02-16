@@ -18,6 +18,7 @@ export function logInUser(email, password, callback) {
         const errorCode = error.code;
         const errorMessage = error.message;
         alert(errorMessage);
+        
       })
       .then(() => {
         const user = firebase.auth().currentUser;
@@ -70,4 +71,8 @@ export function logout() {
     // An error happened.
     console.log(error);
   });
+}
+
+export function checkLoggedIn(){
+  return firebase.auth().currentUser;
 }
