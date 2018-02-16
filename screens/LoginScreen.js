@@ -59,6 +59,6 @@ const styles = StyleSheet.create({
     input:{
       width: '90%',
       flex: 3,
-
+      marginTop: '20%'
     }
 });

@@ -1,15 +1,28 @@
 import React, { Component } from 'react';
 import { View, Text, StyleSheet, ImageBackground } from 'react-native';
-import { Button } from '../components/Submit';
 import { Input } from '../components/Input';
+import { StretchedButtonRegister } from '../components/StretchedButtonRegister';
 
 const styles = StyleSheet.create({
-  container: {
+  form: {
     flex: 1,
     backgroundColor: '#FFF',
     justifyContent: 'center',
     alignItems: 'center',
-  }
+    flexDirection: 'column',
+
+  },
+    buttons: {
+      flex: 0,
+      alignSelf: 'stretch',
+      justifyContent: 'flex-end',
+      flexDirection: 'column',
+    },
+    input:{
+      width: '90%',
+      flex: 3,
+      marginTop: '20%'
+    }
 });
 
 class ProfileScreen extends Component{
@@ -31,8 +44,9 @@ class ProfileScreen extends Component{
         imageStyle={{resizeMode: 'stretch'}}
         style={styles.container}
       >*/
-      <View style={styles.container}>
-        <Input
+      <View style={styles.form}>
+        <View style={styles.input}>
+          <Input
             placeholder={currentUser.displayName}
             label='Name'
             onChangeText= {name => this.setState({ name })}
@@ -51,8 +65,9 @@ class ProfileScreen extends Component{
             onChangeText= {password => this.setState({ password })}
             value= {this.state.password}
           />
-        <View>
-          <Button onPress={() => logout()} title="Afmelden" />
+        </View>
+        <View style={styles.buttons}>
+          <StretchedButtonRegister onPress={() => logout()} text="Afmelden" />
         </View>
 
       </View>
