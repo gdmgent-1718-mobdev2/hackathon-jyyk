@@ -9,7 +9,21 @@ const styles = StyleSheet.create({
     backgroundColor:'transparent',
     justifyContent: 'center',
     alignItems: 'center',
+    flexDirection: 'row',
   },
+  welcomeContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    backgroundColor: '#F5F5F5',
+    flexDirection: 'row',
+    paddingVertical: 50,
+    alignSelf: 'flex-start',
+    marginTop: 140,
+  },
+  welcomeMsg: {
+    fontSize: 38,
+  }
+
 });
 
 class HomeScreen extends Component{
@@ -24,7 +38,9 @@ class HomeScreen extends Component{
         imageStyle={{resizeMode: 'stretch'}}
         style={styles.container}
       >
-      <Text>Hallo, {currentUser.displayName}</Text>
+        <View style={styles.welcomeContainer}>
+          <Text style={styles.welcomeMsg}>Hallo, {currentUser.displayName}</Text>
+        </View>
       </ImageBackground>
     );
   }
