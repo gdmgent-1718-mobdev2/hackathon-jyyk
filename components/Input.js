@@ -35,6 +35,8 @@ const styles = StyleSheet.create({
     width: '100%',
     borderColor: '#eee',
     borderBottomWidth: 2,
+    flex: 0,
+    justifyContent: 'flex-start',
   },
   label: {
     padding: 5,
