@@ -1,8 +1,9 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { Text, View } from 'react-native';
 import { logInUser } from '../utils/firebaseService';
 import { Input } from '../components/Input';
-import { StretchedButtonRegister } from '../components/StretchedButtonRegister';
+import { StretchedButtonRegister } from '../components/StretchedButtonRegister'; //change to one button component
+import { styles } from '../components/Stylesheet'; 
 
 export default class LoginScreen extends React.Component {
   constructor(props){
@@ -41,7 +42,7 @@ export default class LoginScreen extends React.Component {
   }
 }
 
-const styles = StyleSheet.create({
+/*const styles = StyleSheet.create({
   form: {
     flex: 1,
     backgroundColor: '#FFF',
@@ -61,4 +62,4 @@ const styles = StyleSheet.create({
       flex: 3,
       marginTop: '20%'
     }
-});
+});*/

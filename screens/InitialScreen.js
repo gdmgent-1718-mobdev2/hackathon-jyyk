@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet, Button, Image, TouchableOpacity } from 'react-native';
+import { View } from 'react-native';
 import { StretchedButtonLogIn } from '../components/StretchedButtonLogIn';
 import { StretchedButtonRegister } from '../components/StretchedButtonRegister';
 import { Logo } from '../components/Logo';
-
-const styles = StyleSheet.create({
+import { styles } from '../components/Stylesheet'; 
+/*const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#6B8E4E',
@@ -21,13 +21,13 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-end',
     flexDirection: 'column',
   },
-});
+});*/
 
 export default class InitialScreen extends Component{
 
   render() {
     return (
-      <View style={styles.container}>
+      <View style={styles.containerInitial}>
         <View style={styles.logo}>
           <Logo />
         </View>

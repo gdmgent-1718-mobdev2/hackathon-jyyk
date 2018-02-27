@@ -1,5 +1,6 @@
 import React from 'react';
-import { View, StyleSheet, Text, TextInput } from 'react-native';
+import { View, Text, TextInput } from 'react-native';
+import { styles } from './Stylesheet'; 
 
 export class Input extends React.Component {
   constructor(props){
@@ -14,13 +15,12 @@ export class Input extends React.Component {
     let secureTextEntry = this.props.secureTextEntry;
 
     return(
-        <View style={styles.container}>
+        <View style={styles.containerInput}>
           <Text style={styles.label}> { label }</Text>
-          <TextInput style={styles.input}
+          <TextInput style={styles.inputbox}
             autoCorrect={false}
             onChangeText={onChangeText}
             placeholder={placeholder}
-            style={styles.input}
             secureTextEntry={secureTextEntry}
             value={value}
           />
@@ -29,7 +29,7 @@ export class Input extends React.Component {
   }
 }
 
-const styles = StyleSheet.create({
+/*const styles = StyleSheet.create({
   container: {
     marginTop: 10,
     width: '100%',
@@ -53,4 +53,4 @@ const styles = StyleSheet.create({
     fontSize: 17,
     width: '100%',
   }
-});
+});*/

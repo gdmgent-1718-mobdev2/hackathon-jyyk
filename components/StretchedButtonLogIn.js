@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet, Button, Image, TouchableOpacity } from 'react-native';
+import { View, TouchableOpacity } from 'react-native';
 import { BarlowText } from './BarlowText';
 import { OpenSansText }  from './OpenSansText';
+import { styles } from './Stylesheet'; 
 
-const styles = StyleSheet.create({
+/*const styles = StyleSheet.create({
   button: {
     flex: 1,
     justifyContent: 'center',
@@ -15,7 +16,7 @@ const styles = StyleSheet.create({
   register: {
     backgroundColor: '#3C5148'
   },
-});
+});*/
 
 export class StretchedButtonLogIn extends Component{
   render() {

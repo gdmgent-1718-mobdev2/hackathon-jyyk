@@ -1,6 +1,7 @@
 import React from 'react';
-import { Text, View, StyleSheet } from 'react-native';
+import { Text } from 'react-native';
 import { Font } from 'expo';
+import { styles } from './Stylesheet'; 
 
 export class OpenSansText extends React.Component {
   state = {
@@ -27,11 +28,11 @@ export class OpenSansText extends React.Component {
   }
 }
 
-const styles = StyleSheet.create({
+/*const styles = StyleSheet.create({
   text: {
     fontSize: 30,
     alignSelf: 'center',
     color: 'white',
     fontFamily: 'open-sans-regular'
   }
-});
+});*/
