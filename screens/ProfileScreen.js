@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet, ImageBackground } from 'react-native';
+import { View } from 'react-native';
 import { Input } from '../components/Input';
-import { StretchedButtonRegister } from '../components/StretchedButtonRegister';
+import { StretchedButtonRegister } from '../components/StretchedButtonRegister'; //change to one button component
+import { styles } from '../components/Stylesheet'; 
 
-const styles = StyleSheet.create({
+/*const styles = StyleSheet.create({
   form: {
     flex: 1,
     backgroundColor: '#FFF',
@@ -23,7 +24,7 @@ const styles = StyleSheet.create({
       flex: 3,
       marginTop: '20%'
     }
-});
+});*/
 
 class ProfileScreen extends Component{
   constructor(props){
