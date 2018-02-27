@@ -27,12 +27,3 @@ export class BarlowText extends React.Component {
     );
   }
 }
-
-/*const styles = StyleSheet.create({
-  text: {
-    fontSize: 30,
-    alignSelf: 'center',
-    color: 'white',
-    fontFamily: 'barlow-condensed-regular'
-  }
-});*/

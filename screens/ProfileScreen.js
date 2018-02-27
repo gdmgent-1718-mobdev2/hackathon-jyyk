@@ -4,28 +4,6 @@ import { Input } from '../components/Input';
 import { StretchedButtonRegister } from '../components/StretchedButtonRegister'; //change to one button component
 import { styles } from '../components/Stylesheet'; 
 
-/*const styles = StyleSheet.create({
-  form: {
-    flex: 1,
-    backgroundColor: '#FFF',
-    justifyContent: 'center',
-    alignItems: 'center',
-    flexDirection: 'column',
-
-  },
-    buttons: {
-      flex: 0,
-      alignSelf: 'stretch',
-      justifyContent: 'flex-end',
-      flexDirection: 'column',
-    },
-    input:{
-      width: '90%',
-      flex: 3,
-      marginTop: '20%'
-    }
-});*/
-
 class ProfileScreen extends Component{
   constructor(props){
     super(props);
