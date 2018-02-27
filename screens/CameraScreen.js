@@ -9,6 +9,10 @@ export default class CameraScreen extends Component{
     this.state = ({
       hasCameraPermission: null,
       type: Camera.Constants.Type.back,
+      autoFocus: Camera.Constants.AutoFocus.on,
+      whiteBalance: Camera.Constants.WhiteBalance.auto,
+      ratio: '16:9',
+      barCodeDetected: false
     });
   }
 
@@ -17,23 +21,31 @@ export default class CameraScreen extends Component{
     this.setState({ hasCameraPermission: status === 'granted' });
   }
 
+  handleCloseModal() {
+    this.setState({ barCodeDetected: false });
+  }
+
+  onBarCodeRead(barCode) {
+    this.props.navigation.navigate('ScanInfo', {barCode: barCode, closeModal: () => this.handleCloseModal()});
+    this.setState({ barCodeDetected: true });
+  }
+
   render() {
     const { hasCameraPermission } = this.state;
-    if (hasCameraPermission === null) {
+    if (hasCameraPermission === null || this.state.barCodeDetected) {
       return <View />;
     } else if (hasCameraPermission === false) {
       return <Text>No access to camera</Text>;
     } else {
       return (
-        <View style={{ flex: 1 }}>
+          <View style={{ flex: 1 }}>
           <Camera style={{ flex: 1 }} 
           type={this.state.type} 
-          autoFocus={Camera.Constants.AutoFocus.on} 
-          whiteBalance={Camera.Constants.WhiteBalance.auto}
-          ratio='16:9'
-          onBarCodeRead={barCode => {
-            alert(barCode.data);
-          }}>
+          autoFocus={this.state.autoFocus} 
+          whiteBalance={this.state.whiteBalance}
+          ratio={this.state.ratio}
+          barCodeTypes={[Camera.Constants.BarCodeType.qr]}
+          onBarCodeRead={this.onBarCodeRead.bind(this)}>
           </Camera>
         </View>
       );

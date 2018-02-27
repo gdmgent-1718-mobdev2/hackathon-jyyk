@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, Button } from 'react-native';
 import { styles } from '../components/Stylesheet'; 
 
 /*const styles = StyleSheet.create({
@@ -25,6 +25,7 @@ class HomeScreen extends Component{
     return (
         <View style={styles.container}>
           <Text style={styles.welcomeMsg}>Hallo, {currentUser.displayName}</Text>
+          <Button title="Open Camera" onPress={() => this.props.navigation.navigate('Camera')}></Button>
         </View>
     );
   }

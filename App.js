@@ -9,10 +9,20 @@ import HomeScreen from './screens/HomeScreen';
 import WalletScreen from './screens/WalletScreen';
 import ProfileScreen from './screens/ProfileScreen';
 import RegisterScreen from './screens/RegisterScreen';
+import CameraScreen from './screens/CameraScreen';
+import ScanInfoScreen from './screens/ScanInfoScreen';
+
+const HomeNavigator = StackNavigator(
+  {
+  Home: { screen: HomeScreen },
+  Camera: { screen : CameraScreen },
+  ScanInfo: { screen : ScanInfoScreen }
+  }
+)
 
 const AppNavigator = TabNavigator({
   Wallet: { screen: WalletScreen },
-  Home: { screen: HomeScreen },
+  Home: { screen: HomeNavigator },
   Profile: { screen: ProfileScreen },
 }, {
   tabBarComponent: TabBarBottom,
