@@ -29,7 +29,12 @@ const AppNavigator = TabNavigator({
 })
 
 const AuthNavigator = StackNavigator({
-  Initial: { screen: InitialScreen},
+  Initial: { 
+    screen: InitialScreen,
+    navigationOptions: ({navigation}) => ({
+      header: null,
+    })
+  },
   Login: { screen: LoginScreen},
   Register: { screen: RegisterScreen }, //added this line to register
 })
