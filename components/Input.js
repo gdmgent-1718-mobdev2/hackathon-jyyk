@@ -12,6 +12,9 @@ export class Input extends React.Component {
     let onChangeText = this.props.onChangeText;
     let placeholder = this.props.placeholder;
     let secureTextEntry = this.props.secureTextEntry;
+    let autoCapitalize = this.props.autoCapitalize;
+    let keyboardType = this.props.keyboardType;
+    let returnKeyType = this.props.returnKeyType;
 
     return(
         <View style={styles.container}>
@@ -23,6 +26,9 @@ export class Input extends React.Component {
             style={styles.input}
             secureTextEntry={secureTextEntry}
             value={value}
+            autoCapitalize={autoCapitalize}
+            keyboardType={keyboardType}
+            returnKeyType={returnKeyType}
           />
         </View>
     )

@@ -25,12 +25,17 @@ export default class RegisterScreen extends React.Component {
               label='Name'
               onChangeText= {name => this.setState({ name })}
               value= {this.state.name}
+              returnKeyType='next'
+              autoCapitalize='words'
             />
             <Input
               placeholder='Enter your email'
               label='Email'
               onChangeText= {email => this.setState({ email })}
               value= {this.state.email}
+              autoCapitalize='none'
+              keyboardType='email-address'
+              returnKeyType='next'
             />
             <Input
               placeholder='Enter your password'
@@ -38,6 +43,9 @@ export default class RegisterScreen extends React.Component {
               secureTextEntry
               onChangeText= {password => this.setState({ password })}
               value= {this.state.password}
+              autoCapitalize='none'
+              keyboardType='default'
+              returnKeyType='send'
             />
           </View>
           <View style={styles.buttons}>

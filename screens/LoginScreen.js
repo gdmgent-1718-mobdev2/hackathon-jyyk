@@ -24,6 +24,9 @@ export default class LoginScreen extends React.Component {
               label='Email'
               onChangeText= {email => this.setState({ email })}
               value= {this.state.email}
+              autoCapitalize='none'
+              keyboardType='email-address'
+              returnKeyType='next'
             />
             <Input
               placeholder='Enter your password'
@@ -31,6 +34,9 @@ export default class LoginScreen extends React.Component {
               secureTextEntry
               onChangeText= {password => this.setState({ password })}
               value= {this.state.password}
+              autoCapitalize='none'
+              keyboardType='default'
+              returnKeyType='send'
             />
           </View>
           <View style={styles.buttons}>
