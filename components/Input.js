@@ -34,29 +34,3 @@ export class Input extends React.Component {
     )
   }
 }
-
-/*const styles = StyleSheet.create({
-  container: {
-    marginTop: 10,
-    width: '100%',
-    borderColor: '#eee',
-    borderBottomWidth: 2,
-    flex: 0,
-    justifyContent: 'flex-start',
-  },
-  label: {
-    padding: 5,
-    color: '#333',
-    fontSize: 19,
-    fontWeight: '700',
-    width: '100%',
-  },
-  input: {
-    paddingRight: 5,
-    paddingLeft: 5,
-    paddingBottom: 2,
-    color: '#333',
-    fontSize: 17,
-    width: '100%',
-  }
-});*/

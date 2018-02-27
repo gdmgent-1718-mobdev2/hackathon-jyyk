@@ -4,20 +4,6 @@ import { BarlowText } from './BarlowText';
 import { OpenSansText }  from './OpenSansText';
 import { styles } from './Stylesheet'; 
 
-/*const styles = StyleSheet.create({
-  button: {
-    flex: 1,
-    justifyContent: 'center',
-    padding: 50
-  },
-  inloggen: {
-    backgroundColor: '#D5DDDE'
-  },
-  register: {
-    backgroundColor: '#3C5148'
-  },
-});*/
-
 export class StretchedButtonRegister extends Component{
   render() {
     return (
