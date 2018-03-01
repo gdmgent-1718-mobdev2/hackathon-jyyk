@@ -64,6 +64,17 @@ export function signUpUser(name, email, password, callback){
       });
 }
 
+export function updateUser(name, email, uid){
+  const user = firebase.auth().currentUser;
+  firebase.database().ref('users/' + uid).set({
+    name: name,
+    email: email
+  });
+  user.updateProfile({
+    displayName: name,
+  });
+}
+
 export function logout() {
   firebase.auth().signOut().then(() => {
     // Sign-out successful.

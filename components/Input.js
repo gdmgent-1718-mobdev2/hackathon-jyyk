@@ -16,6 +16,7 @@ export class Input extends React.Component {
     let autoCapitalize = this.props.autoCapitalize;
     let keyboardType = this.props.keyboardType;
     let returnKeyType = this.props.returnKeyType;
+    let editable = this.props.editable;
 
     return(
         <View style={styles.containerInput}>
@@ -29,6 +30,7 @@ export class Input extends React.Component {
             autoCapitalize={autoCapitalize}
             keyboardType={keyboardType}
             returnKeyType={returnKeyType}
+            editable={editable}
           />
         </View>
     )
