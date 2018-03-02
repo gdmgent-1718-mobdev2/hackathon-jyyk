@@ -8,6 +8,7 @@ import LoginScreen from './screens/LoginScreen';
 import HomeScreen from './screens/HomeScreen';
 import WalletScreen from './screens/WalletScreen';
 import ProfileScreen from './screens/ProfileScreen';
+import EditProfileScreen from './screens/EditProfileScreen';
 import RegisterScreen from './screens/RegisterScreen';
 import CameraScreen from './screens/CameraScreen';
 import ScanInfoScreen from './screens/ScanInfoScreen';
@@ -18,12 +19,19 @@ const HomeNavigator = StackNavigator(
   Camera: { screen : CameraScreen },
   ScanInfo: { screen : ScanInfoScreen }
   }
-)
+);
+
+const ProfileNavigator = StackNavigator(
+  {
+  Profile: { screen: ProfileScreen },
+  EditProfile: { screen : EditProfileScreen },
+  }
+);
 
 const AppNavigator = TabNavigator({
   Wallet: { screen: WalletScreen },
   Home: { screen: HomeNavigator },
-  Profile: { screen: ProfileScreen },
+  Profile: { screen: ProfileNavigator },
 }, {
   tabBarComponent: TabBarBottom,
   tabBarPosition: 'bottom',
@@ -36,7 +44,7 @@ const AppNavigator = TabNavigator({
       padding: 10,
     }
   }
-})
+});
 
 const AuthNavigator = StackNavigator({
   Initial: { 
@@ -47,7 +55,7 @@ const AuthNavigator = StackNavigator({
   },
   Login: { screen: LoginScreen},
   Register: { screen: RegisterScreen }, //added this line to register
-})
+});
 
 export default class App extends Component {
   constructor(props) {
@@ -55,11 +63,10 @@ export default class App extends Component {
     this.state = { currentUser: null  };
   }
 
-  handleLogin(user) {
+  handleUpdate(user) {
     this.setState({
       currentUser: user,
     });
-    console.log(user);
   }
 
   handleLogout() {
@@ -68,7 +75,6 @@ export default class App extends Component {
     });
     logout();
   }
-
 
   componentWillMount() {
     ignoreWarnings('Setting a timer');
@@ -86,14 +92,18 @@ export default class App extends Component {
     });
   }
 
-  render() {
-    console.log(this.state.currentUser);
-    
+  render() {    
     const { currentUser } = this.state;
       if (this.state.currentUser !== null) {
-        return <AppNavigator screenProps={{currentUser, logout: () => this.handleLogout()}} />
+        return <AppNavigator screenProps= {
+          {
+            currentUser,
+            logout: () => this.handleLogout(),
+            update: (user) => this.handleUpdate(user)
+          }
+        } />
       } else {
-        return <AuthNavigator screenProps={{login: (user) => this.handleLogin(user) }}/>
+        return <AuthNavigator screenProps={{login: (user) => this.handleUpdate(user) }}/>
       }
   }
 }

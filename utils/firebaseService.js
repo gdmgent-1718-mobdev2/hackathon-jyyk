@@ -64,33 +64,53 @@ export function signUpUser(name, email, password, callback){
       });
 }
 
-export function updateUser(name, email, uid){
+export function updateUser(name, email, password, uid, callback){
   const user = firebase.auth().currentUser;
-  user.updateProfile({
-    displayName: name
-  }).then(function() {
-    firebase.database().ref('users/' + uid).update({
-      name: name
+  const credential = firebase.auth.EmailAuthProvider.credential(
+    user.email, 
+    password
+  );
+  user.reauthenticateWithCredential(credential).then(function() {
+    // User re-authenticated.
+
+    // Updating profile
+    user.updateProfile({
+      displayName: name
+    })
+    // Updating profile in database
+    .then(function() {
+      firebase.database().ref('users/' + uid).update({
+        name: name
+      });
+      callback(user);
+    })
+    .catch(error => {
+      // Handle Errors here.
+      const errorMessage = error.message;
+      alert(errorMessage);
+    })
+
+    // Updating email
+    user.updateEmail(email)
+    // Updating email in database
+    .then(function() {
+      firebase.database().ref('users/' + uid).update({
+        email: email
+      });
+      callback(user);
+    })
+    .catch(error => {
+      // Handle Errors here.
+      const errorMessage = error.message;
+      alert(errorMessage);
     });
-  }).catch(error => {
+  })
+
+  // Re-authentication failed
+  .catch(function(error) {
     // Handle Errors here.
-    const errorCode = error.code;
     const errorMessage = error.message;
     alert(errorMessage);
-  })
-  user.updateEmail(email).then(function() {
-    firebase.database().ref('users/' + uid).update({
-      email: email
-    });
-  }).catch(error => {
-    // Handle Errors here.
-    const errorCode = error.code;
-    const errorMessage = error.message;
-    if (errorCode === 'auth/requires-recent-login') {
-      alert('Please enter current password');
-    } else {
-      alert(errorMessage);
-    }
   });
 }
 
