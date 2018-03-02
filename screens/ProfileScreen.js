@@ -15,67 +15,47 @@ class ProfileScreen extends Component{
       email: currentUser.email,
       name: currentUser.displayName,
       uid: currentUser.uid,
-      //password: '',
       editable: false,
     })
   }
 
-  
-  
-  generateButtons(){
-    const { logout } = this.props.screenProps;
-    if(this.state.editable == false){
-      return (
-        <View style={styles.buttons}>
-          <StretchedButtonLogIn onPress={() => this.edit()} text="Bewerken" styling="loggin"/>
-          <StretchedButtonRegister onPress={() => logout()} text="Afmelden" />
-        </View>
-      );
-    }
-      return (
-        <View style={styles.buttons}>
-          <StretchedButtonLogIn onPress={() => this.save()} text="Opslaan" />
-          <StretchedButtonRegister onPress={() => this.cancel()} text="Cancel" />
-        </View>
-      );
+generateButtons(){
+  const { logout } = this.props.screenProps;
+  if(this.state.editable == false){
+    return (
+      <View style={styles.buttons}>
+        <StretchedButtonLogIn onPress={() => this.edit()} text="Bewerken" styling="loggin"/>
+        <StretchedButtonRegister onPress={() => logout()} text="Afmelden" />
+      </View>
+    );
+  }
+    return (
+      <View style={styles.buttons}>
+        <StretchedButtonLogIn onPress={() => this.save()} text="Opslaan" />
+        <StretchedButtonRegister onPress={() => this.cancel()} text="Cancel" />
+      </View>
+    );
   }
 
   edit(){
-    
-    this.setState({
-      editable: true,
-    });    
+    this.setState({ editable: true });    
   }
 
   save(){
-    this.setState({editable: false});
-    alert('U info is geupdate');
-    updateUser(this.state.name, this.state.email);
+    this.setState({ editable: false });
+    updateUser(this.state.name, this.state.email, this.state.uid);
   }
 
   cancel(){
-    const { currentUser } = this.props.screenProps;
-    this.setState({
-      editable: false,
-      name: currentUser.displayName,
-      email: currentUser.email,
-      password: '',
-    });
-  }
-
-  componentWillUpdate(){
-    this.generateButtons();
+    this.setState({ editable: false });
   }
 
   render() {
-    //const { logout } = this.props.screenProps;
-    //const { currentUser } = this.props.screenProps;
     let button = this.generateButtons();
     return (
       <View style={styles.form}>
         <View style={styles.input}>
           <Input
-            //placeholder={currentUser.displayName}
             placeholder= {this.state.name}
             label='Name'
             onChangeText= {name => this.setState({ name })}
@@ -83,7 +63,6 @@ class ProfileScreen extends Component{
             editable={this.state.editable}
           />
           <Input
-            //placeholder={currentUser.email}
             placeholder= {this.state.email}
             label='Email'
             onChangeText= {email => this.setState({ email })}
@@ -103,5 +82,3 @@ class ProfileScreen extends Component{
 }
 
 export default ProfileScreen;
-
-//<StretchedButtonRegister onPress={() => logout()} text="Afmelden" />

@@ -66,12 +66,31 @@ export function signUpUser(name, email, password, callback){
 
 export function updateUser(name, email, uid){
   const user = firebase.auth().currentUser;
-  firebase.database().ref('users/' + uid).set({
-    name: name,
-    email: email
-  });
   user.updateProfile({
-    displayName: name,
+    displayName: name
+  }).then(function() {
+    firebase.database().ref('users/' + uid).update({
+      name: name
+    });
+  }).catch(error => {
+    // Handle Errors here.
+    const errorCode = error.code;
+    const errorMessage = error.message;
+    alert(errorMessage);
+  })
+  user.updateEmail(email).then(function() {
+    firebase.database().ref('users/' + uid).update({
+      email: email
+    });
+  }).catch(error => {
+    // Handle Errors here.
+    const errorCode = error.code;
+    const errorMessage = error.message;
+    if (errorCode === 'auth/requires-recent-login') {
+      alert('Please enter current password');
+    } else {
+      alert(errorMessage);
+    }
   });
 }
 
