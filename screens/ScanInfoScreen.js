@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { View, Text, Button } from 'react-native';
 import { styles } from '../components/Stylesheet'; 
+import { processTransaction } from '../utils/firebaseService';
 
 export default class ScanInfoScreen extends Component{
 
@@ -11,11 +12,22 @@ export default class ScanInfoScreen extends Component{
   }
   render() {
     const { params } = this.props.navigation.state;
+    const { currentUser } = this.props.screenProps;
     const barCode = params ? params.barCode : null;
-    return (
+    if (JSON.parse(barCode.data).transactionType === 'in') {
+      const data = JSON.parse(barCode.data);
+      processTransaction(data, currentUser.uid);
+      return (
         <View style={styles.container}>
-          <Text style={styles.welcomeMsg}>QR code data: {barCode.data}</Text>
+          <Text style={styles.welcomeMsg}>Je hebt {data.amount} punten ontvangen!</Text>
         </View>
-    );
+      );
+    } else {
+      return (
+        <View style={styles.container}>
+          <Text style={styles.welcomeMsg}>Oeps! Deze QR code lijkt niet de juiste te zijn.</Text>
+        </View>
+      );
+    }
   }
 }

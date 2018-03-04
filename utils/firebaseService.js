@@ -132,3 +132,34 @@ export function checkLoggedIn(callback){
     }
   });
 }
+
+export function getTransactions(uid) {
+  let response = [];
+  firebase.database().ref('transactions/' + uid).on('child_added', snapshot => {
+    response.push(snapshot);
+  });
+  console.log(response);
+  return response;
+}
+
+export function processTransaction(data, uid) {
+  const transactionsKey = firebase.database().ref('transactions/' + uid).push().key;
+  let updates = {};
+  updates['transactions/' + uid + '/' + transactionsKey] = data;
+  firebase.database().ref().update(updates);
+  firebase.database().ref('users/' + uid).transaction(function(user) {
+    if (user) {
+      if (user.totalAmount) {
+        if (data.transactionType === 'in') {
+          user.totalAmount = user.totalAmount + data.amount;
+        } else {
+          user.totalAmount = user.totalAmount - data.amount;
+        }
+      } 
+      else {
+          user.totalAmount = data.amount;
+      }
+    }
+    return user;
+  });
+}
