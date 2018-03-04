@@ -14,15 +14,18 @@ export default class ScanInfoScreen extends Component{
     const { params } = this.props.navigation.state;
     const { currentUser } = this.props.screenProps;
     const barCode = params ? params.barCode : null;
-    if (JSON.parse(barCode.data).transactionType === 'in') {
+    try {
       const data = JSON.parse(barCode.data);
-      processTransaction(data, currentUser.uid);
-      return (
-        <View style={styles.container}>
-          <Text style={styles.welcomeMsg}>Je hebt {data.amount} punten ontvangen!</Text>
-        </View>
-      );
-    } else {
+      if (data.transactionType === 'in') {
+        processTransaction(data, currentUser.uid);
+        return (
+          <View style={styles.container}>
+            <Text style={styles.welcomeMsg}>Je hebt {data.amount} punten ontvangen!</Text>
+          </View>
+        );
+      }
+    }
+    catch (err) {
       return (
         <View style={styles.container}>
           <Text style={styles.welcomeMsg}>Oeps! Deze QR code lijkt niet de juiste te zijn.</Text>
