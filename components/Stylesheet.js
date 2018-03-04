@@ -95,6 +95,18 @@ export const styles = StyleSheet.create({
         color: '#333',
         fontSize: 17,
         width: '100%',
+      },
+      list:{
+        backgroundColor: '#000',
+        flex: 3,
+        flexDirection: 'column',
+      },
+      listItem:{
+        flex: 1,
+        justifyContent: 'center',
+        padding: 50
       }
+
+
 
 });
