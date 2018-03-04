@@ -152,7 +152,7 @@ export function processTransaction(data, uid) {
       if (user.totalAmount) {
         if (data.transactionType === 'in') {
           user.totalAmount = user.totalAmount + data.amount;
-        } else {
+        } else if (data.transactionType === 'out' && user.totalAmount >= data.amount) {
           user.totalAmount = user.totalAmount - data.amount;
         }
       } 
