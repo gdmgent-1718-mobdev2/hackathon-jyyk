@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import { View } from 'react-native';
 import { Input } from '../components/Input';
-import { StretchedButtonRegister } from '../components/StretchedButtonRegister'; //change to one button component
-import { StretchedButtonLogIn } from '../components/StretchedButtonLogIn'; //change to one button component
+import { StretchedButton } from '../components/StretchedButton'; //change to one button component
 import { styles } from '../components/Stylesheet';
 import { updateUser } from '../utils/firebaseService';
 
@@ -57,8 +56,8 @@ class ProfileScreen extends Component{
         </View>
 
       <View style={styles.buttons}>
-        <StretchedButtonLogIn onPress={() => this.save()} text="Opslaan" />
-        <StretchedButtonRegister onPress={() => this.props.navigation.goBack()} text="Cancel" />
+        <StretchedButton onPress={() => this.save()} text="Opslaan" color='#D5DDDE'/>
+        <StretchedButton onPress={() => this.props.navigation.goBack()} text="Cancel" color='#3C5148'/>
       </View>
 
       </View>

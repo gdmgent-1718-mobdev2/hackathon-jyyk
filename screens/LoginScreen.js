@@ -1,9 +1,10 @@
 import React from 'react';
-import { Text, View } from 'react-native';
+import { View, Text } from 'react-native';
 import { logInUser } from '../utils/firebaseService';
 import { Input } from '../components/Input';
-import { StretchedButtonRegister } from '../components/StretchedButtonRegister'; //change to one button component
+import { StretchedButton } from '../components/StretchedButton';
 import { styles } from '../components/Stylesheet'; 
+import { SocialMediaButton } from '../components/SocialMediaButton';
 
 export default class LoginScreen extends React.Component {
   constructor(props){
@@ -22,27 +23,37 @@ export default class LoginScreen extends React.Component {
           <View style={styles.input}>
             <Input
               placeholder='Enter your email'
-              label='Email'
               onChangeText= {email => this.setState({ email })}
               value= {this.state.email}
               autoCapitalize='none'
               keyboardType='email-address'
               returnKeyType='next'
+              icon={require('../assets/images/icons/enveloppe-icon.png')}
             />
             <Input
               placeholder='Enter your password'
-              label='Password'
               secureTextEntry
               onChangeText= {password => this.setState({ password })}
               value= {this.state.password}
               autoCapitalize='none'
               keyboardType='default'
               returnKeyType='send'
+              icon={require('../assets/images/icons/lock.png')}
             />
           </View>
           <View style={styles.buttons}>
-            <StretchedButtonRegister  onPress={() => logInUser(this.state.email, this.state.password, login)} text='Log In' />
-          </View>          
+            <StretchedButton onPress={() => logInUser(this.state.email, this.state.password, login)} text='Log In' color='#6B8E40'/>
+          </View>   
+          <View style={styles.socialMediaContainer}>
+            <SocialMediaButton name="Facebook" socialmedia={require('../assets/images/icons/facebook-logo.png')} ></SocialMediaButton>
+            <SocialMediaButton name="Google" socialmedia={require('../assets/images/icons/google-plus.png')} ></SocialMediaButton>
+          </View>
+          <View style={styles.textQuestionContainer}>
+            <Text style={styles.textQuestion}>Heb je nog geen account?</Text>
+          </View>
+          <View style={styles.buttons}>
+            <StretchedButton text='Register' onPress={() => this.props.navigation.navigate('Register')} color='#D5DDDE'></StretchedButton>
+          </View>       
         </View>
     );
   }

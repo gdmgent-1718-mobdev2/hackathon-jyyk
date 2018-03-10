@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import { View } from 'react-native';
 import { Input } from '../components/Input';
-import { StretchedButtonRegister } from '../components/StretchedButtonRegister'; //change to one button component
-import { StretchedButtonLogIn } from '../components/StretchedButtonLogIn'; //change to one button component
+import { StretchedButton } from '../components/StretchedButton'; 
 import { styles } from '../components/Stylesheet';
 
 export default class ProfileScreen extends Component{
@@ -17,22 +16,27 @@ export default class ProfileScreen extends Component{
       <View style={styles.form}>
         <View style={styles.input}>
           <Input
+            returnKeyType='next'
+            autoCapitalize='words'
+            icon={require('../assets/images/icons/profile.png')}
             placeholder= {currentUser.displayName}
-            label='Name'
             value= {currentUser.displayName}
             editable={false}
           />
           <Input
+            autoCapitalize='none'
+            keyboardType='email-address'
+            returnKeyType='next'
+            icon={require('../assets/images/icons/enveloppe-icon.png')}
             placeholder= {currentUser.email}
-            label='Email'
             value= {currentUser.email}
             editable={false}
           />
         </View>
 
         <View style={styles.buttons}>
-          <StretchedButtonLogIn onPress={() => this.props.navigation.navigate('EditProfile')} text="Bewerken" styling="loggin"/>
-          <StretchedButtonRegister onPress={() => logout()} text="Afmelden" />
+          <StretchedButton onPress={() => this.props.navigation.navigate('EditProfile')} text="Bewerken" color='#D5DDDE'/>
+          <StretchedButton onPress={() => logout()} text="Afmelden" color='#3C5148' />
         </View>
 
       </View>

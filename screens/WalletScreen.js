@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
-import {StretchedButtonRegister} from '../components/StretchedButtonRegister';
+import {StretchedButton} from '../components/StretchedButton';
 import { TransactionList } from '../components/TransactionList';
 import { getTransactions } from '../utils/firebaseService';
 
@@ -34,7 +34,7 @@ class WalletScreen extends Component{
         <View style={styles.container}>
           <Text style={styles.title}>WalletScreen</Text>
           <View style={styles.buttons}>
-            <StretchedButtonRegister onPress={() => alert('Transactie gedaan')} text="Punten Inruilen" />
+            <StretchedButton onPress={() => alert('Transactie gedaan')} text="Punten Inruilen" color='#3C5148' />
             
           </View>
           <TransactionList data={this.state.transactions}/>

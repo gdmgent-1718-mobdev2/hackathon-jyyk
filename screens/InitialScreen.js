@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { View } from 'react-native';
-import { StretchedButtonLogIn } from '../components/StretchedButtonLogIn';
-import { StretchedButtonRegister } from '../components/StretchedButtonRegister';
+import { StretchedButton } from '../components/StretchedButton';
 import { Logo } from '../components/Logo';
 import { styles } from '../components/Stylesheet'; 
 
@@ -14,8 +13,8 @@ export default class InitialScreen extends Component{
           <Logo />
         </View>
         <View style={styles.buttons}>
-          <StretchedButtonLogIn onPress={() => this.props.navigation.navigate('Login')}  text='Inloggen'  />
-          <StretchedButtonRegister onPress={() => this.props.navigation.navigate('Register')}  text='Registreren' />
+          <StretchedButton onPress={() => this.props.navigation.navigate('Login')}  text='Inloggen' color='#D5DDDE'/>
+          <StretchedButton onPress={() => this.props.navigation.navigate('Register')}  text='Registreren' color='#3C5148'/>
         </View>
       </View>
     );

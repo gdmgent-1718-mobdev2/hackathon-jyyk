@@ -1,6 +1,7 @@
 import React from 'react';
-import { View, Text, TextInput } from 'react-native';
+import { View, Text, TextInput, Image } from 'react-native';
 import { styles } from './Stylesheet'; 
+import { IconTextInput } from '../components/IconTextInput';
 
 export class Input extends React.Component {
   constructor(props){
@@ -16,11 +17,11 @@ export class Input extends React.Component {
     let autoCapitalize = this.props.autoCapitalize;
     let keyboardType = this.props.keyboardType;
     let returnKeyType = this.props.returnKeyType;
-    let editable = this.props.editable;
-
+    let src = this.props.src;
     return(
         <View style={styles.containerInput}>
-          <Text style={styles.label}> { label }</Text>
+          <IconTextInput icon={this.props.icon} >
+          </IconTextInput>
           <TextInput style={styles.inputbox}
             autoCorrect={false}
             onChangeText={onChangeText}
@@ -30,7 +31,7 @@ export class Input extends React.Component {
             autoCapitalize={autoCapitalize}
             keyboardType={keyboardType}
             returnKeyType={returnKeyType}
-            editable={editable}
+            underlineColorAndroid='transparent'
           />
         </View>
     )
